@@ -40,3 +40,7 @@ a {
 .dir {
   direction: rtl;
 }
+.MuiButton-text,
+.MuiButton-root {
+  font-family: "iransans";
+}
