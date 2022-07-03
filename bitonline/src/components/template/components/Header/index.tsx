@@ -7,7 +7,7 @@ import { Box } from "@mui/system";
 
 const Header: FC = () => {
   return (
-    <div className={CS.container}>
+    <div className={`${CS.container} dir`}>
       <AppBar position="static" className={CS.header}>
         <Box className={CS.container}>
           <Toolbar className={CS.toolbar}>

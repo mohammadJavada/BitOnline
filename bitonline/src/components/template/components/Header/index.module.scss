@@ -1,10 +1,12 @@
 .container {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 40px;
+  background-color: #fafafa;
   .header {
     background-color: transparent;
     box-shadow: none;
+    max-width: 1200px;
+    margin: 0 auto;
     .loginField {
       display: flex;
       justify-content: space-between;

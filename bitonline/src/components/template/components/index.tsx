@@ -14,10 +14,12 @@ interface LayoutProps {
 }
 
 const PageLayout = ({ children }: LayoutProps) => (
-  <Container maxWidth="lg" className={`${CS.layout} dir`}>
+  <>
     <Header />
-    {children}
-  </Container>
+    <Container maxWidth="lg" className={`${CS.layout} dir`}>
+      {children}
+    </Container>
+  </>
 );
 
 export default PageLayout;
