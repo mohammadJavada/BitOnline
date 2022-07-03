@@ -7,36 +7,17 @@
 @font-face {
   font-family: "iransans";
   font-weight: 500;
-  src: url("../../public/font/iranSans/IranSans-500.woff2");
+  src: url("../../font/iransans/iransans-500.woff2");
 }
 
 @font-face {
   font-family: "iransans";
   font-weight: 700;
-  src: url("../../public/font/iranSans/IranSans-700.woff2");
+  src: url("../../font/iransans/IranSans-700.woff2");
 }
 
-/* @font-face {
+@font-face {
   font-family: "lora";
   font-weight: 500;
   src: url("../../font/lora/lora-500.ttf");
-} */
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "iransans";
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.dir {
-  direction: rtl;
 }

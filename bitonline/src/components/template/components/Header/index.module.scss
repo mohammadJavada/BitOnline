@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  .header {
+    background-color: transparent;
+    box-shadow: none;
+    .loginField {
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+      align-items: center;
+      .spaceContent {
+        color: #e0e0e0;
+        font-size: 28px;
+        font-weight: 300;
+      }
+    }
+    .toolbar {
+      display: flex;
+      color: rgba(0, 0, 0, 0.6);
+      padding: 0px;
+      .loginBtn {
+        background-color: rgb(66, 133, 242);
+        font-weight: 500;
+      }
+    }
+  }
+}
