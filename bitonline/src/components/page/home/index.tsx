@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useQuery } from "react-query";
 import SortData from "./components/SortData";
-import Table from "./components/Table";
+import HomeTable from "./components/Table";
 import CS from "./index.module.scss";
 
 type CurrencyData = {
@@ -58,7 +58,7 @@ const HomePage: NextPage = (currency) => {
       </Head>
       <div>
         <SortData />
-        <Table {...currency} />
+        <HomeTable {...currency} />
       </div>
     </div>
   );
