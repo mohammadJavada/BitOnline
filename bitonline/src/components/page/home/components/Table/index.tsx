@@ -62,9 +62,15 @@ export default function HomeTable(data: any) {
               <TableCell
                 align="right"
                 width="15%"
-                className={row.percent > 0 ? CS.positive : CS.negative}
+                className={
+                  row.percent === 0
+                    ? CS.percent
+                    : row.percent > 0
+                    ? CS.positive
+                    : CS.negative
+                }
               >
-                {row.percent}
+                {row.percent}%
               </TableCell>
               <TableCell align="right" width="15%">
                 <HistoryLineChart

@@ -53,7 +53,9 @@ export const HistoryLineChart = ({
         enabled: false,
       },
     },
+
     elements: {
+      backgroundColor: "rgb(255, 99, 71)",
       line: {
         tension: 0.1,
       },
