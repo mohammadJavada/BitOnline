@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useQuery } from "react-query";
 import SortData from "./components/SortData";
+import Table from "./components/Table";
 import CS from "./index.module.scss";
 
 type CurrencyData = {
@@ -44,11 +45,12 @@ const getCurrnecyList = async () => {
   return data;
 };
 
-const HomePage: NextPage = () => {
-  const { data, isLoading, isFetching } = useQuery<CurrencyData>(
-    "currencyList",
-    getCurrnecyList
-  );
+const HomePage: NextPage = (currency) => {
+  // const { data, isLoading, isFetching } = useQuery<CurrencyData>(
+  //   "currencyList",
+  //   getCurrnecyList
+  // );
+
   return (
     <div className={CS.container}>
       <Head>
@@ -56,6 +58,7 @@ const HomePage: NextPage = () => {
       </Head>
       <div>
         <SortData />
+        <Table {...currency} />
       </div>
     </div>
   );
