@@ -15,6 +15,9 @@
   font-weight: 700;
   src: url("../../public/font/iranSans/IranSans-700.woff2");
 }
+*{
+  font-family:"iransans" ;
+}
 
 /* @font-face {
   font-family: "lora";

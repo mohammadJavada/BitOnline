@@ -1,7 +1,20 @@
-import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import {
+  Button,
+  FilledInput,
+  FormControl,
+  Grid,
+  InputAdornment,
+  OutlinedInput,
+  TextField,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 import { Box } from "@mui/system";
+import Image from "next/image";
 import React, { FC, useState } from "react";
 import CS from "./index.module.scss";
+import searchIcon from "../../../../../../public/assets/search.png";
+import { starImg } from "../../../../../data/icons/icon";
 
 const SortData: FC = () => {
   const [type, setType] = React.useState<string | null>("تومان");
@@ -15,6 +28,30 @@ const SortData: FC = () => {
   return (
     <div>
       <span className={CS.title}>قیمت لحظه ای</span>
+      <Grid container columns={{ xs: 4, md: 12 }}>
+        <Grid item xs={4}>
+          <div>
+            <OutlinedInput
+              placeholder="جستجو"
+              // value={values.amount}
+              // onChange={handleChange("amount")}
+              startAdornment={
+                <InputAdornment position="start">
+                  <Image src={searchIcon} alt="kde" />
+                </InputAdornment>
+              }
+            />
+          </div>
+        </Grid>
+        <Grid item xs={2}>
+          <Button
+            variant="outlined"
+            startIcon={<Image src={starImg} alt="*" />}
+          >
+            <span style={{ padding: "0 10px" }}>نشان شده ها</span>
+          </Button>
+        </Grid>
+      </Grid>
 
       <Box
         m={1}
