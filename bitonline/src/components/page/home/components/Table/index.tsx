@@ -10,10 +10,10 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 import { starImg } from "../../../../../data/icons/icon";
 
-import CS from "./index.module.scss";
 import { HistoryLineChart } from "./components";
-import axios from "axios";
-import useInfiniteScroll from "react-infinite-scroll-hook";
+
+import CS from "./index.module.scss";
+
 
 export default function HomeTable({ data = [] }: any) {
   if (!data) return <></>;

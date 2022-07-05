@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useQuery } from "react-query";
+import { HomeProvider } from "../../../context";
 import SortData from "./components/SortData";
 import HomeTable from "./components/Table";
 import CS from "./index.module.scss";
@@ -32,7 +32,7 @@ const HomePage: NextPage = (currency) => {
   useEffect(() => {
     setList([...list, ...news]);
   }, [news]);
-  console.log(list);
+
   return (
     <div className={CS.container}>
       <Head>

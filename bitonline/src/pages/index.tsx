@@ -2,11 +2,14 @@ import axios from "axios";
 import type { NextPage } from "next";
 import HomePage from "../components/page/home";
 import PageLayout from "../components/template/components";
+import { HomeProvider } from "../context";
 
 const Home: NextPage = ({ data }: any) => {
   return (
     <div>
-      <PageLayout>{data ? <HomePage {...data} /> : <div></div>}</PageLayout>
+      <HomeProvider>
+        <PageLayout>{data ? <HomePage {...data} /> : <div></div>}</PageLayout>
+      </HomeProvider>
     </div>
   );
 };
