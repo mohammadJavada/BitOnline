@@ -29,6 +29,7 @@ const HomePage: NextPage = (currency) => {
   };
   const data = useContext(HomeContext);
   const { currencyList, search } = data;
+
   useEffect(() => {
     setList([...list, ...news]);
   }, [news]);
@@ -39,6 +40,7 @@ const HomePage: NextPage = (currency) => {
         <title>قیمت لحظه ای | بیت برگ</title>
       </Head>
       <div>
+        {/* @ts-ignore */}
         <SortData total={total} />
         <InfiniteScroll
           dataLength={list.length}

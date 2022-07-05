@@ -1,4 +1,5 @@
 import { Line } from "react-chartjs-2";
+import React from "react";
 
 // import CS from "./HistoryLineChart.module.scss";
 import {
@@ -20,7 +21,7 @@ Chart.register(
   CategoryScale
 );
 
-export const HistoryLineChart = ({
+const HistoryLineChart_ = ({
   width = null,
   height = null,
   //
@@ -90,3 +91,5 @@ export const HistoryLineChart = ({
     </div>
   );
 };
+
+export const HistoryLineChart = React.memo(HistoryLineChart_, () => true);
