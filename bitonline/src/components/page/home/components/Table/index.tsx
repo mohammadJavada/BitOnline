@@ -13,7 +13,8 @@ import { starImg } from "../../../../../data/icons/icon";
 import { HistoryLineChart } from "./components";
 
 import CS from "./index.module.scss";
-
+import toFarsiNumber from "../../../../../utils/toFarsiNumber/toFarsiNumber";
+import { Price } from "../../../../../utils";
 
 export default function HomeTable({ data = [] }: any) {
   if (!data) return <></>;
@@ -82,10 +83,11 @@ export default function HomeTable({ data = [] }: any) {
                 )}
               </TableCell>
               <TableCell align="left" width="15%">
-                {row.price}
+                {/* {toFarsiNumber(row?.price)} */}
+                {Price.seperate(row?.price)}
               </TableCell>
               <TableCell align="left" width="15%">
-                {row.price}
+                {Price.seperate(row?.price)}
               </TableCell>
               <TableCell align="left" width="15%">
                 <div className={CS.imageField}>

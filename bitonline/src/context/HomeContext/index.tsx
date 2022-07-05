@@ -3,6 +3,7 @@ import React, { createContext, ReactNode, useState } from "react";
 export const HomeContext = createContext<any>({});
 
 export const HomeProvider = (props: any) => {
+  const [currencyList, setCurrencyList] = useState([]);
   const [search, setSearch] = useState<string>("");
   const [sort, setSort] = useState(0);
   const [type, setType] = useState("تومان");
@@ -11,7 +12,17 @@ export const HomeProvider = (props: any) => {
 
   return (
     <HomeContext.Provider
-      value={{ search, setSearch, sort, setSort, sortList, type, setType }}
+      value={{
+        currencyList,
+        setCurrencyList,
+        search,
+        setSearch,
+        sort,
+        setSort,
+        sortList,
+        type,
+        setType,
+      }}
     >
       {props.children}
     </HomeContext.Provider>

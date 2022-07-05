@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { HomeProvider } from "../../../context";
 import SortData from "./components/SortData";
 import HomeTable from "./components/Table";
 import CS from "./index.module.scss";

@@ -43,7 +43,7 @@ const SortData: FC = ({ total }: any) => {
           <span>{total} ارز دیجیتال</span>
         </div>
       </div>
-      <Grid container columns={{ xs: 4, md: 12 }}>
+      <Grid container spacing={2}>
         <Grid item xs={3}>
           <div>
             <OutlinedInput
@@ -67,7 +67,7 @@ const SortData: FC = ({ total }: any) => {
           </Button>
         </Grid>
         <Grid item xs={3}>
-          <FormControl size="medium" sx={{ width: 300 }}>
+          <FormControl size="medium" sx={{ width: 200 }}>
             <InputLabel id="demo-multiple-checkbox-label">
               ترتیب بر اساس
             </InputLabel>
