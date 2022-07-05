@@ -46,7 +46,9 @@ const SortData: FC = ({ total }: any) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       const { data } = await axios.get(
-        `https://api.bitbarg.me/api/v1/currencies?page=${1}/&q=${search}`
+        search
+          ? `https://api.bitbarg.me/api/v1/currencies?page=${1}/&q=${search}`
+          : ""
       );
       data ? setCurrencyList(data) : setCurrencyList([]);
     }, 1500);
@@ -77,7 +79,11 @@ const SortData: FC = ({ total }: any) => {
             }
           />
         </div>
-        <Button variant="outlined" startIcon={<Image src={starImg} alt="*" />}>
+        <Button
+          style={{ border: "1px solid #e0e0e0" }}
+          variant="outlined"
+          startIcon={<Image src={starImg} alt="*" />}
+        >
           <span style={{ padding: "0 10px" }}>نشان شده ها</span>
         </Button>
         <FormControl size="medium" sx={{ width: 200 }}>
