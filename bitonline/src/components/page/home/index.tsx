@@ -1,6 +1,7 @@
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import SortData from "./components/SortData";
 import HomeTable from "./components/Table";

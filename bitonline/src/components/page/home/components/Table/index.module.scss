@@ -1,4 +1,5 @@
 .tableContainer {
+  box-shadow: none;
   .percent {
     font-weight: 700;
   }
@@ -12,12 +13,12 @@
   }
   .imageField {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     gap: 10px;
     .currencyName {
       display: flex;
       flex-direction: column;
-      align-items: end;
+      align-items: flex-end;
       .numberPrefix {
         width: 20px;
         height: 20px;
