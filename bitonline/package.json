@@ -19,6 +19,7 @@
     "react-chartjs-2": "^3.0.4",
     "react-dom": "18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-infinite-scroll-hook": "^4.0.3",
     "react-query": "^3.39.1",
     "sass": "^1.53.0"
   },

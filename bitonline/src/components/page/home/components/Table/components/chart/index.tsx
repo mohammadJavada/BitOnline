@@ -37,7 +37,7 @@ export const HistoryLineChart = ({
         data: history,
         fill: true,
         borderColor: status === "Y" ? "#00C851" : "#FF3547",
-        backgroundColor: status === "Y" ? "#00C85144" : "#FF354744",
+        backgroundColor: status === "Y" ? "rgba(76,221,146,.4" : "#FF354744",
         tension: 0.1,
       },
     ],

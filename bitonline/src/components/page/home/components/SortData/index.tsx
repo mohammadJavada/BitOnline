@@ -16,7 +16,7 @@ import CS from "./index.module.scss";
 import searchIcon from "../../../../../../public/assets/search.png";
 import { starImg } from "../../../../../data/icons/icon";
 
-const SortData: FC = () => {
+const SortData: FC = ({ total = 0 }: any) => {
   const [type, setType] = React.useState<string | null>("تومان");
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
@@ -24,10 +24,16 @@ const SortData: FC = () => {
   ) => {
     setType(type);
   };
-
+  // console.log(total);
   return (
     <div>
-      <span className={CS.title}>قیمت لحظه ای</span>
+      <div className={CS.sortHeader}>
+        <span className={CS.title}>قیمت لحظه ای</span>
+        <div className={CS.totalCount}>
+          <span className={CS.total}></span>
+          <span>{total} ارز دیجیتال</span>
+        </div>
+      </div>
       <Grid container columns={{ xs: 4, md: 12 }}>
         <Grid item xs={4}>
           <div>

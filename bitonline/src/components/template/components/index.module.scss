@@ -1,10 +1,12 @@
 .layoutContainer {
-  background: rgb(202, 202, 214);
-  background: linear-gradient(
-    90deg,
-    rgba(202, 202, 214, 0.9612219887955182) 35%,
-    rgba(245, 245, 245, 1) 100%
-  );
+  // background: rgb(202, 202, 214);
+  // background: linear-gradient(
+  //   90deg,
+  //   rgba(202, 202, 214, 0.9612219887955182) 35%,
+  //   rgba(245, 245, 245, 1) 100%
+  background: url("../../../../public/assets/background.png");
+  // position: fixed;
+  background-size: cover;
   .layout {
     padding: 15px;
     padding-top: 40px;

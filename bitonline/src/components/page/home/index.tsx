@@ -1,65 +1,53 @@
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { useQuery } from "react-query";
 import SortData from "./components/SortData";
 import HomeTable from "./components/Table";
 import CS from "./index.module.scss";
 
-type CurrencyData = {
-  // currencyList
-  result: {
-    items: {
-      chart?: string[]; // مقادیر مورد نیاز چارت
-      coin?: string; // نام مختصر ارز
-      percent?: number; // درصد تغییر
-      enName?: string; // نام انگلیسی
-      faName?: string; // نام فارسی
-      icon?: string; // آدرس تصویر
-      quote?: number; // ارزش بازار)(MCap)
-      price?: number; //قیمت به تتر
-    };
-    meta: {
-      paginateHelper: {
-        currentPage?: number; // صفحه فعلی
-        currencyCount?: number; // تعداد در صفحه فعلی
-        lastPage?: number; // صفحه آخر
-        pageSize?: number; // تعداد در هر صفحه
-        total?: number; // تعداد کل
-      };
-      prices: {
-        // اطلاعات قیمت دلار
-        buy?: number; // قیمت خرید به تومان
-        sell?: number; // قیمت فروش به تومان
-        // برای محاسبه قیمت ارز به تومان باید قیمت آهن به تتر را در قیمت دلار به تومان ضرب کنیم، قیمت خرید و فروش متفاوت است
-      };
-    };
-  };
-};
-
-const getCurrnecyList = async () => {
-  const { data } = await axios.get(
-    `https://api.bitbarg.me/api/v1/currencies?page=${1}`
-  );
-
-  return data;
-};
-
 const HomePage: NextPage = (currency) => {
-  // const { data, isLoading, isFetching } = useQuery<CurrencyData>(
-  //   "currencyList",
-  //   getCurrnecyList
-  // );
+  const { result }: any = currency;
+  const { items, meta } = result;
+  const { paginateHelper } = meta;
+  const { lastPage, total } = paginateHelper;
+  const [list, setList] = useState([...items]);
+  const [pages, setPages] = useState(2);
+  const [news, setNews] = useState([]);
 
+  const fetchData = async () => {
+    // setPages(pages + 1);
+    setPages(pages + 1);
+    const { data } = await axios.get(
+      `https://api.bitbarg.me/api/v1/currencies?page=${pages}`
+    );
+    const list = data.result.items;
+    setNews(list);
+
+    return list;
+  };
+
+  useEffect(() => {
+    setList([...list, ...news]);
+  }, [news]);
+  console.log(list);
   return (
     <div className={CS.container}>
       <Head>
         <title>قیمت لحظه ای | بیت برگ</title>
       </Head>
       <div>
-        <SortData />
-        <HomeTable {...currency} />
+        <SortData total={total} />
+        <InfiniteScroll
+          dataLength={list.length}
+          next={fetchData}
+          hasMore={pages <= lastPage}
+          loader={<h4>Loading...</h4>}
+        >
+          <HomeTable data={list} />
+        </InfiniteScroll>
       </div>
     </div>
   );
