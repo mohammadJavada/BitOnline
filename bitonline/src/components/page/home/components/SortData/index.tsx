@@ -1,7 +1,6 @@
 import {
   Button,
   FormControl,
-  Grid,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -64,93 +63,82 @@ const SortData: FC = ({ total }: any) => {
           <span>{total} ارز دیجیتال</span>
         </div>
       </div>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <div>
-            <OutlinedInput
-              placeholder="جستجو"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Image src={searchIcon} alt="kde" />
-                </InputAdornment>
-              }
-            />
-          </div>
-        </Grid>
-        <Grid item xs={3}>
-          <Button
-            variant="outlined"
-            startIcon={<Image src={starImg} alt="*" />
-          
-          }
+      <div className={CS.sortContainer}>
+        <div>
+          <OutlinedInput
+            style={{ width: "100%" }}
+            placeholder="جستجو"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            startAdornment={
+              <InputAdornment position="start">
+                <Image src={searchIcon} alt="kde" />
+              </InputAdornment>
+            }
+          />
+        </div>
+        <Button variant="outlined" startIcon={<Image src={starImg} alt="*" />}>
+          <span style={{ padding: "0 10px" }}>نشان شده ها</span>
+        </Button>
+        <FormControl size="medium" sx={{ width: 200 }}>
+          <InputLabel id="demo-multiple-checkbox-label">
+            ترتیب بر اساس
+          </InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+            value={sort}
+            onChange={handleChange}
+            label="ترتیب بر اساس"
           >
-            <span style={{ padding: "0 10px" }}>نشان شده ها</span>
-          </Button>
-        </Grid>
-        <Grid item xs={3}>
-          <FormControl size="medium" sx={{ width: 200 }}>
-            <InputLabel id="demo-multiple-checkbox-label">
-              ترتیب بر اساس
-            </InputLabel>
-            <Select
-              labelId="demo-select-small"
-              id="demo-select-small"
-              value={sort}
-              onChange={handleChange}
-              label="ترتیب بر اساس"
-            >
-              {sortList?.map((item: any, i: number) => (
-                <MenuItem key={i} value={i}>
-                  <em>{item}</em>
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <Box
-            m={1}
-            style={{
-              border: "1px solid #e0e0e0",
-              padding: "4px",
-              maxWidth: "max-content",
-              borderRadius: "5px",
-            }}
+            {sortList?.map((item: any, i: number) => (
+              <MenuItem key={i} value={i}>
+                <em>{item}</em>
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Box
+          style={{
+            border: "1px solid #e0e0e0",
+            padding: "4px",
+            maxWidth: "max-content",
+            borderRadius: "5px",
+            display: "flex",
+            width: "100%",
+          }}
+        >
+          <ToggleButtonGroup
+            value={type}
+            exclusive
+            onChange={handleAlignment}
+            aria-label="text alignment"
           >
-            <ToggleButtonGroup
-              value={type}
-              exclusive
-              onChange={handleAlignment}
-              aria-label="text alignment"
+            <ToggleButton
+              style={{
+                padding: "0 20px",
+                margin: "0 5px",
+                borderRadius: "5px",
+                backgroundColor: type === "تومان" ? "#4285F21A" : "#fff",
+              }}
+              value="تومان"
             >
-              <ToggleButton
-                style={{
-                  padding: "0 20px",
-                  margin: "0 5px",
-                  borderRadius: "5px",
-                  backgroundColor: type === "تومان" ? "#4285F21A" : "#fff",
-                }}
-                value="تومان"
-              >
-                تومان
-              </ToggleButton>
-              <ToggleButton
-                style={{
-                  padding: "0 20px",
-                  margin: "0 5px",
-                  borderRadius: "5px",
-                  backgroundColor: type === "تتر" ? "#4285F21A" : "#fff",
-                }}
-                value="تتر"
-              >
-                تتر
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </Box>
-        </Grid>
-      </Grid>
+              تومان
+            </ToggleButton>
+            <ToggleButton
+              style={{
+                padding: "0 20px",
+                margin: "0 5px",
+                borderRadius: "5px",
+                backgroundColor: type === "تتر" ? "#4285F21A" : "#fff",
+              }}
+              value="تتر"
+            >
+              تتر
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
+      </div>
     </div>
   );
 };

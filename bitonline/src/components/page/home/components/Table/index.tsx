@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import Image from "next/image";
-import { starImg } from "../../../../../data/icons/icon";
+import { starImg, tetherImg } from "../../../../../data/icons/icon";
 
 import { HistoryLineChart } from "./components";
 
@@ -80,7 +80,7 @@ export default function HomeTable({ data = [], meta }: any) {
                     : CS.negative
                 }
               >
-                {row.percent}%
+                <div className={CS.percentdir}>{row.percent}%</div>
               </TableCell>
               <TableCell align="right" width="15%">
                 {row?.chart?.length ? (
@@ -95,10 +95,29 @@ export default function HomeTable({ data = [], meta }: any) {
                 )}
               </TableCell>
               <TableCell align="left" width="15%">
-                {Price.seperate(checkPrice(row?.price, "sell"))}
+                <div className={CS.price}>
+                  {Price.seperate(checkPrice(row?.price, "sell"))}
+                  <span>
+                    {type === "تومان" ? (
+                      " تومان"
+                    ) : (
+                      <Image src={tetherImg} alt="*" width={20} height={20} />
+                    )}
+                  </span>
+                </div>
               </TableCell>
               <TableCell align="left" width="15%">
-                {Price.seperate(checkPrice(row?.price, "buy"))}
+                <div className={CS.price}>
+                  {Price.seperate(checkPrice(row?.price, "buy"))}
+                  <span>
+                    {type === "تومان" ? (
+                      " تومان"
+                    ) : (
+                      <Image src={tetherImg} alt="*" width={20} height={20} />
+                    )}
+                  </span>
+                </div>
+                {/* {Price.seperate(checkPrice(row?.price, "buy"))} */}
               </TableCell>
               <TableCell align="left" width="15%">
                 <div className={CS.imageField}>

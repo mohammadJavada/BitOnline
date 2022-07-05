@@ -1,5 +1,14 @@
 .tableContainer {
   box-shadow: none;
+  .percentdir{
+    direction: ltr;
+  }
+  .price{
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   .percent {
     font-weight: 700;
   }
