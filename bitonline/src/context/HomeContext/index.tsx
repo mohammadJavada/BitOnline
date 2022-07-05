@@ -4,6 +4,7 @@ export const HomeContext = createContext<any>({});
 
 export const HomeProvider = (props: any) => {
   const [currencyList, setCurrencyList] = useState([]);
+
   const [search, setSearch] = useState<string>("");
   const [sort, setSort] = useState(0);
   const [type, setType] = useState("تومان");
@@ -13,8 +14,8 @@ export const HomeProvider = (props: any) => {
   return (
     <HomeContext.Provider
       value={{
-        currencyList,
         setCurrencyList,
+        currencyList,
         search,
         setSearch,
         sort,

@@ -13,7 +13,6 @@ import { starImg } from "../../../../../data/icons/icon";
 import { HistoryLineChart } from "./components";
 
 import CS from "./index.module.scss";
-import toFarsiNumber from "../../../../../utils/toFarsiNumber/toFarsiNumber";
 import { Price } from "../../../../../utils";
 
 export default function HomeTable({ data = [] }: any) {

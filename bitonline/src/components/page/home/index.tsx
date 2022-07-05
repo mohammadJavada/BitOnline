@@ -1,8 +1,9 @@
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { HomeContext } from "../../../context";
 import SortData from "./components/SortData";
 import HomeTable from "./components/Table";
 import CS from "./index.module.scss";
@@ -27,7 +28,8 @@ const HomePage: NextPage = (currency) => {
 
     return list;
   };
-
+  const data = useContext(HomeContext);
+  const { currencyList, search } = data;
   useEffect(() => {
     setList([...list, ...news]);
   }, [news]);
@@ -43,9 +45,9 @@ const HomePage: NextPage = (currency) => {
           dataLength={list.length}
           next={fetchData}
           hasMore={pages <= lastPage}
-          loader={<h4>Loading...</h4>}
+          loader={<h4></h4>}
         >
-          <HomeTable data={list} />
+          <HomeTable data={search ? currencyList?.result?.items : list} />
         </InfiniteScroll>
       </div>
     </div>

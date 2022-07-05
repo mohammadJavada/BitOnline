@@ -13,11 +13,12 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import CS from "./index.module.scss";
 import searchIcon from "../../../../../../public/assets/search.png";
 import { starImg } from "../../../../../data/icons/icon";
 import { HomeContext } from "../../../../../context";
+import axios from "axios";
 
 const SortData: FC = ({ total }: any) => {
   // const [type, setType] = React.useState<string | null>("تومان");
@@ -29,10 +30,30 @@ const SortData: FC = ({ total }: any) => {
   };
 
   const data = useContext(HomeContext);
-  const { search, setSearch, sort, setSort, sortList, type, setType } = data;
+  const {
+    setCurrencyList,
+    search,
+    setSearch,
+    sort,
+    setSort,
+    sortList,
+    type,
+    setType,
+  } = data;
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
   };
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(async () => {
+      const { data } = await axios.get(
+        `https://api.bitbarg.me/api/v1/currencies?page=${1}/&q=${search}`
+      );
+      data ? setCurrencyList(data) : setCurrencyList([]);
+    }, 1500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [search]);
 
   return (
     <div>
