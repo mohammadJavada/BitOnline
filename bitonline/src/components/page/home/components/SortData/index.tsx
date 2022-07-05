@@ -82,7 +82,9 @@ const SortData: FC = ({ total }: any) => {
         <Grid item xs={3}>
           <Button
             variant="outlined"
-            startIcon={<Image src={starImg} alt="*" />}
+            startIcon={<Image src={starImg} alt="*" />
+          
+          }
           >
             <span style={{ padding: "0 10px" }}>نشان شده ها</span>
           </Button>
@@ -96,7 +98,6 @@ const SortData: FC = ({ total }: any) => {
               labelId="demo-select-small"
               id="demo-select-small"
               value={sort}
-              // label="Age"
               onChange={handleChange}
               label="ترتیب بر اساس"
             >
@@ -128,8 +129,8 @@ const SortData: FC = ({ total }: any) => {
                 style={{
                   padding: "0 20px",
                   margin: "0 5px",
-                  border: "1px solid",
                   borderRadius: "5px",
+                  backgroundColor: type === "تومان" ? "#4285F21A" : "#fff",
                 }}
                 value="تومان"
               >
@@ -139,8 +140,8 @@ const SortData: FC = ({ total }: any) => {
                 style={{
                   padding: "0 20px",
                   margin: "0 5px",
-                  border: "1px solid",
                   borderRadius: "5px",
+                  backgroundColor: type === "تتر" ? "#4285F21A" : "#fff",
                 }}
                 value="تتر"
               >

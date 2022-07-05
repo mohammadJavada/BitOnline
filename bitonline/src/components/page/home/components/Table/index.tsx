@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,9 +14,22 @@ import { HistoryLineChart } from "./components";
 
 import CS from "./index.module.scss";
 import { Price } from "../../../../../utils";
+import { HomeContext } from "../../../../../context";
 
-export default function HomeTable({ data = [] }: any) {
+export default function HomeTable({ data = [], meta }: any) {
+  const datas = useContext(HomeContext);
+  const { type } = datas;
+  const { buy, sell } = meta;
   if (!data) return <></>;
+
+  const checkPrice = (data: number, t: string) => {
+    if (type === "تومان" && t === "sell") {
+      return data * sell;
+    } else if (type === "تومان" && t === "buy") {
+      return data * buy;
+    }
+    return data;
+  };
 
   return (
     <TableContainer component={Paper} className={CS.tableContainer}>
@@ -33,10 +46,10 @@ export default function HomeTable({ data = [] }: any) {
               نمودار
             </TableCell>
             <TableCell align="left" width="15%">
-              قیمت فروش
+              {type === "تومان" ? " قیمت فروش" : "ارزش بازار"}
             </TableCell>
             <TableCell align="left" width="15%">
-              قیمت خرید
+              {type === "تومان" ? " قیمت خرید" : "قیمت جهانی"}
             </TableCell>
             <TableCell align="left" width="15%">
               ارز دیجیتال
@@ -82,11 +95,10 @@ export default function HomeTable({ data = [] }: any) {
                 )}
               </TableCell>
               <TableCell align="left" width="15%">
-                {/* {toFarsiNumber(row?.price)} */}
-                {Price.seperate(row?.price)}
+                {Price.seperate(checkPrice(row?.price, "sell"))}
               </TableCell>
               <TableCell align="left" width="15%">
-                {Price.seperate(row?.price)}
+                {Price.seperate(checkPrice(row?.price, "buy"))}
               </TableCell>
               <TableCell align="left" width="15%">
                 <div className={CS.imageField}>

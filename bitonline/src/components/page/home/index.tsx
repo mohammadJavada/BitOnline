@@ -11,14 +11,13 @@ import CS from "./index.module.scss";
 const HomePage: NextPage = (currency) => {
   const { result }: any = currency;
   const { items, meta } = result;
-  const { paginateHelper } = meta;
+  const { paginateHelper, prices } = meta;
   const { lastPage, total } = paginateHelper;
   const [list, setList] = useState([...items]);
   const [pages, setPages] = useState(2);
   const [news, setNews] = useState([]);
 
   const fetchData = async () => {
-    // setPages(pages + 1);
     setPages(pages + 1);
     const { data } = await axios.get(
       `https://api.bitbarg.me/api/v1/currencies?page=${pages}`
@@ -47,7 +46,10 @@ const HomePage: NextPage = (currency) => {
           hasMore={pages <= lastPage}
           loader={<h4></h4>}
         >
-          <HomeTable data={search ? currencyList?.result?.items : list} />
+          <HomeTable
+            data={search ? currencyList?.result?.items : list}
+            meta={prices}
+          />
         </InfiniteScroll>
       </div>
     </div>
