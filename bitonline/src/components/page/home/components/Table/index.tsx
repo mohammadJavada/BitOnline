@@ -24,11 +24,11 @@ export default function HomeTable({ data = [], meta }: any) {
 
   const checkPrice = (data: number, t: string) => {
     if (type === "تومان" && t === "sell") {
-      return data * sell;
+      return Math.floor(data * sell);
     } else if (type === "تومان" && t === "buy") {
-      return data * buy;
+      return Math.floor(data * buy);
     }
-    return data;
+    return Math.floor(data);
   };
 
   return (

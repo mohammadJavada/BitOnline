@@ -131,7 +131,7 @@ const SortData: FC = ({ total }: any) => {
               }}
               value="تومان"
             >
-              تومان
+              <div>تومان</div>
             </ToggleButton>
             <ToggleButton
               style={{
@@ -142,7 +142,7 @@ const SortData: FC = ({ total }: any) => {
               }}
               value="تتر"
             >
-              تتر
+              <div>تتر</div>
             </ToggleButton>
           </ToggleButtonGroup>
         </Box>

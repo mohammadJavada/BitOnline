@@ -39,7 +39,7 @@ const HistoryLineChart_ = ({
         fill: true,
         borderColor: status === "Y" ? "#00C851" : "#FF3547",
         backgroundColor: status === "Y" ? "rgba(76,221,146,.4" : "#FF354744",
-        tension: 0.1,
+        tension: 0,
       },
     ],
   };
@@ -56,9 +56,13 @@ const HistoryLineChart_ = ({
     },
 
     elements: {
+      point: {
+        radius: 0,
+      },
       backgroundColor: "rgb(255, 99, 71)",
       line: {
-        tension: 0.1,
+        tension: 0,
+        borderWidth: 0.5,
       },
     },
     interaction: {
