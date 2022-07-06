@@ -84,7 +84,9 @@ const SortData: FC = ({ total }: any) => {
           variant="outlined"
           startIcon={<Image src={starImg} alt="*" />}
         >
-          <span style={{ padding: "0 10px" }}>نشان شده ها</span>
+          <span style={{ padding: "0 10px", color: "rgba(0, 0, 0, 0.87)" }}>
+            نشان شده ها
+          </span>
         </Button>
         <FormControl size="medium" sx={{ width: 200 }}>
           <InputLabel id="demo-multiple-checkbox-label">

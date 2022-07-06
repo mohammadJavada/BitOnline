@@ -36,23 +36,27 @@ export default function HomeTable({ data = [], meta }: any) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="right" width="15%">
-              نشان کردن
+            <TableCell
+              align="right"
+              width="15%"
+              className={`${CS.tableHeader}`}
+            >
+              <div className={CS.select}>نشان کردن</div>
             </TableCell>
-            <TableCell align="right" width="15%">
-              تغییرات
+            <TableCell align="right" width="15%" className={CS.tableHeader}>
+              <div>تغییرات</div>
             </TableCell>
-            <TableCell align="center" width="15%">
-              نمودار
+            <TableCell align="center" width="15%" className={CS.tableHeader}>
+              <div>نمودار</div>
             </TableCell>
-            <TableCell align="left" width="15%">
-              {type === "تومان" ? " قیمت فروش" : "ارزش بازار"}
+            <TableCell align="left" width="15%" className={CS.tableHeader}>
+              <div>{type === "تومان" ? " قیمت فروش" : "ارزش بازار"}</div>
             </TableCell>
-            <TableCell align="left" width="15%">
-              {type === "تومان" ? " قیمت خرید" : "قیمت جهانی"}
+            <TableCell align="left" width="15%" className={CS.tableHeader}>
+              <div>{type === "تومان" ? " قیمت خرید" : "قیمت جهانی"}</div>
             </TableCell>
-            <TableCell align="left" width="15%">
-              ارز دیجیتال
+            <TableCell align="left" width="15%" className={CS.tableHeader}>
+              <div>ارز دیجیتال</div>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -96,7 +100,9 @@ export default function HomeTable({ data = [], meta }: any) {
               </TableCell>
               <TableCell align="left" width="15%">
                 <div className={CS.price}>
-                  {Price.seperate(checkPrice(row?.price, "sell"))}
+                  <span className={CS.tableHeader}>
+                    {Price.seperate(checkPrice(row?.price, "sell"))}
+                  </span>
                   <span>
                     {type === "تومان" ? (
                       " تومان"
@@ -108,7 +114,9 @@ export default function HomeTable({ data = [], meta }: any) {
               </TableCell>
               <TableCell align="left" width="15%">
                 <div className={CS.price}>
-                  {Price.seperate(checkPrice(row?.price, "buy"))}
+                  <span className={CS.tableHeader}>
+                    {Price.seperate(checkPrice(row?.price, "buy"))}
+                  </span>
                   <span>
                     {type === "تومان" ? (
                       " تومان"
@@ -117,7 +125,6 @@ export default function HomeTable({ data = [], meta }: any) {
                     )}
                   </span>
                 </div>
-                {/* {Price.seperate(checkPrice(row?.price, "buy"))} */}
               </TableCell>
               <TableCell align="left" width="15%">
                 <div className={CS.imageField}>

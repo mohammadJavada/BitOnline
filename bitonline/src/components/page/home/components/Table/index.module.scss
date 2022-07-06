@@ -1,9 +1,15 @@
 .tableContainer {
   box-shadow: none;
-  .percentdir{
+  .select {
+    color: black;
+  }
+  .tableHeader {
+    font-weight: 700;
+  }
+  .percentdir {
     direction: ltr;
   }
-  .price{
+  .price {
     direction: ltr;
     display: flex;
     align-items: center;
