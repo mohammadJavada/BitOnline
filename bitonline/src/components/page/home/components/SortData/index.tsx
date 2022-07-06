@@ -20,7 +20,6 @@ import { HomeContext } from "../../../../../context";
 import axios from "axios";
 
 const SortData: FC = ({ total }: any) => {
-  // const [type, setType] = React.useState<string | null>("تومان");
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
     type: string | null
@@ -125,11 +124,6 @@ const SortData: FC = ({ total }: any) => {
               gridTemplateColumns: "1fr 1fr",
               width: "100%",
             }}
-            // display: grid;
-            // grid-template-columns: 1fr 1fr;
-            // /* display: flex; */
-            // justify-content: space-around;
-            // width: 100%;
           >
             <ToggleButton
               style={{
@@ -137,6 +131,7 @@ const SortData: FC = ({ total }: any) => {
                 margin: "0 5px",
                 borderRadius: "5px",
                 backgroundColor: type === "تومان" ? "#4285F21A" : "#fff",
+                borderColor: type === "تومان" ? "#4285F21A" : "#fff",
               }}
               value="تومان"
             >
@@ -148,6 +143,7 @@ const SortData: FC = ({ total }: any) => {
                 margin: "0 5px",
                 borderRadius: "5px",
                 backgroundColor: type === "تتر" ? "#4285F21A" : "#fff",
+                borderColor: type === "تتر" ? "#4285F21A" : "#fff",
               }}
               value="تتر"
             >

@@ -35,7 +35,7 @@ export default function HomeTable({ data = [], meta }: any) {
     <TableContainer component={Paper} className={CS.tableContainer}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow className={CS.tableRow}>
             <TableCell
               align="right"
               width="15%"
@@ -129,7 +129,7 @@ export default function HomeTable({ data = [], meta }: any) {
               <TableCell align="left" width="15%">
                 <div className={CS.imageField}>
                   <div className={CS.currencyName}>
-                    <div>{row?.enName}</div>
+                    <div className={CS.currencyEnName}>{row?.enName}</div>
                     <div className={CS.currencySymbol}>
                       <div className={CS.numberPrefix}>{i + 1}</div>
                       <div>{row?.coin}</div>
