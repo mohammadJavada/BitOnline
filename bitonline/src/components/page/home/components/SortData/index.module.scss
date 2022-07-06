@@ -1,10 +1,10 @@
-.sortContainer{
-display: grid;
-grid-template-columns: auto auto auto auto;
-gap: 20px;
+.sortContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  gap: 20px;
 }
-  .title {
-    font-weight: 700;
+.title {
+  font-weight: 700;
   font-size: 1.285714285714286rem;
 }
 .sortHeader {

@@ -110,7 +110,6 @@ const SortData: FC = ({ total }: any) => {
           style={{
             border: "1px solid #e0e0e0",
             padding: "4px",
-            maxWidth: "max-content",
             borderRadius: "5px",
             display: "flex",
             width: "100%",
@@ -121,6 +120,16 @@ const SortData: FC = ({ total }: any) => {
             exclusive
             onChange={handleAlignment}
             aria-label="text alignment"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "100%",
+            }}
+            // display: grid;
+            // grid-template-columns: 1fr 1fr;
+            // /* display: flex; */
+            // justify-content: space-around;
+            // width: 100%;
           >
             <ToggleButton
               style={{
