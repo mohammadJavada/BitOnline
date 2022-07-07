@@ -22,7 +22,7 @@ const HomePage: NextPage = (currency) => {
     setIsFetch(true);
   };
 
-  const { data: test, loading } = useFetch(
+  const { data: dataList } = useFetch(
     `https://api.bitbarg.me/api/v1/currencies`,
     isFetch ? [] : items,
     currentPage,
@@ -30,6 +30,7 @@ const HomePage: NextPage = (currency) => {
     sort,
     isFetch
   );
+
   return (
     <div className={CS.container}>
       <Head>
@@ -39,12 +40,12 @@ const HomePage: NextPage = (currency) => {
         {/* @ts-ignore */}
         <SortData total={total} />
         <InfiniteScroll
-          dataLength={test.length}
+          dataLength={dataList.length}
           next={fetchMore}
           hasMore={currentPage <= lastPage}
           loader={<h4></h4>}
         >
-          <HomeTable data={test} meta={prices} />
+          <HomeTable data={dataList} meta={prices} />
         </InfiniteScroll>
       </div>
     </div>

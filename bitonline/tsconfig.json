@@ -16,8 +16,8 @@
     "incremental": true,
     "baseUrl": ".",
 		"paths": {
-			"@page/*": ["./src/components/Page/*"],
-			"@template": ["./src/components/Template"],
+			"@page/*": ["./src/components/page/*"],
+			"@template": ["./src/components/template/components/*"],
 			"@components/*": ["./src/components/*"],
 			"@context/*": ["./src/context/"],
 			"@hooks": ["./src/hooks"],

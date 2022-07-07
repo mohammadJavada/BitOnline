@@ -1,8 +1,9 @@
 import axios from "axios";
 import type { NextPage } from "next";
-import HomePage from "../components/page/home";
+import HomePage from "@page/home";
+
 import PageLayout from "../components/template/components";
-import { HomeProvider } from "../context";
+import { HomeProvider } from "@context/index";
 
 const Home: NextPage = ({ data }: any) => {
   return (
