@@ -12,24 +12,15 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useContext, useState } from "react";
 import CS from "./index.module.scss";
 import searchIcon from "../../../../../../public/assets/search.png";
 import { starImg } from "../../../../../data/icons/icon";
 import { HomeContext } from "../../../../../context";
-import axios from "axios";
 
 const SortData: FC = ({ total }: any) => {
-  const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
-    type: string | null
-  ) => {
-    setType(type);
-  };
-
   const data = useContext(HomeContext);
   const {
-    setCurrencyList,
     search,
     setSearch,
     sort,
@@ -37,23 +28,37 @@ const SortData: FC = ({ total }: any) => {
     sortList,
     type,
     setType,
+    setIsFetch,
+    setSortLists,
+    setCurrentPage,
   } = data;
-  const handleChange = (event: SelectChangeEvent) => {
-    setSort(event.target.value);
+
+  const [delay, setDelay] = useState(0);
+
+  const handleAlignment = (
+    event: React.MouseEvent<HTMLElement>,
+    type: string | null
+  ) => {
+    setType(type);
   };
 
-  useEffect(() => {
+  const handleChange = (event: SelectChangeEvent) => {
+    setSort(event.target.value);
+    setSortLists([]);
+    setCurrentPage(1);
+    setIsFetch(true);
+  };
+
+  const handleSearch = (e: any) => {
+    setSearch(e.target.value);
     const delayDebounceFn = setTimeout(async () => {
-      const { data } = await axios.get(
-        search
-          ? `https://api.bitbarg.me/api/v1/currencies?page=${1}/&q=${search}`
-          : ""
-      );
-      data ? setCurrencyList(data) : setCurrencyList([]);
-    }, 1500);
+      setCurrentPage(1);
+      setIsFetch(true);
+      setDelay(delay + 1);
+    }, 2000);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [search]);
+  };
 
   return (
     <div>
@@ -70,7 +75,7 @@ const SortData: FC = ({ total }: any) => {
             style={{ width: "100%" }}
             placeholder="جستجو"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
                 <Image src={searchIcon} alt="kde" />
@@ -81,7 +86,7 @@ const SortData: FC = ({ total }: any) => {
         <Button
           style={{ border: "1px solid #e0e0e0" }}
           variant="outlined"
-          startIcon={<Image src={starImg} alt="*" />}
+          startIcon={<Image src={starImg} alt="*" width={20} height={20} />}
         >
           <span style={{ padding: "0 10px", color: "rgba(0, 0, 0, 0.87)" }}>
             نشان شده ها

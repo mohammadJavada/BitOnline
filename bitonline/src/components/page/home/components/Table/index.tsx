@@ -69,7 +69,7 @@ export default function HomeTable({ data = [], meta }: any) {
               <TableCell align="right">
                 {
                   <Button variant="text">
-                    <Image src={starImg} alt="*" />
+                    <Image src={starImg} alt="*" width={20} height={20} />
                   </Button>
                 }
               </TableCell>
