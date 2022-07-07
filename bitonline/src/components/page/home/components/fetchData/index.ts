@@ -17,9 +17,6 @@ export default function useFetch(
   const [data, setData] = useState(sort ? [] : dataList);
 
   const [searchData, setSearchData] = useState<any>([]);
-  //   const [sortData, setSortData] = useState<any>([]);
-
-  console.log({ page, sort });
 
   const trueSort = (sort: number) => {
     switch (sort) {
