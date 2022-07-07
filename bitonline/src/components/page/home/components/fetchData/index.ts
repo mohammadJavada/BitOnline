@@ -18,9 +18,7 @@ export default function useFetch(
       if (isFetch) {
         try {
           setLoading(true);
-          const response = await axios.get(
-            `${url}?page=${page}&sort=${sort}&q=${search}`
-          );
+          const response = await axios.get(`${url}?page=${page}&sort=${sort}`);
           const { data }: any = response;
           console.log(data);
           const list = data?.result?.items;
