@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/index.js", "src/utils/toFarsiNumber/convert.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/index.js", "src/utils/convertNumber/convert.js"],
   "exclude": ["node_modules"]
 }
