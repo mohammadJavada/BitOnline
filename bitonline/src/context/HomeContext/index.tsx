@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const HomeContext = createContext<any>({});
 

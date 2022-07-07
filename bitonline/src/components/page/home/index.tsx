@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { HomeContext } from "../../../context";
-import useFetch from "./components/fetchData";
+import { HomeContext } from "@context/index";
+import useFetch from "./components/useFetch/index";
 import SortData from "./components/SortData";
 import HomeTable from "./components/Table";
 import CS from "./index.module.scss";

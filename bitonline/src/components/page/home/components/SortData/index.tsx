@@ -10,13 +10,15 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
+
+import React, { FC, useContext, useState } from "react";
+
 import { Box } from "@mui/system";
 import Image from "next/image";
-import React, { FC, useContext, useState } from "react";
+import { starImg, searchIcon } from "@data";
+import { HomeContext } from "@context/index";
+
 import CS from "./index.module.scss";
-import searchIcon from "../../../../../../public/assets/search.png";
-import { starImg } from "../../../../../data/icons/icon";
-import { HomeContext } from "../../../../../context";
 
 const SortData: FC = ({ total }: any) => {
   const data = useContext(HomeContext);

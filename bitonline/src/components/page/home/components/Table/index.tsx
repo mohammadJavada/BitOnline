@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,13 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import Image from "next/image";
-import { starImg, tetherImg } from "../../../../../data/icons/icon";
 
+import { starImg, tetherImg } from "@data";
+import { Price } from "@utils";
+import { HomeContext } from "@context/index";
 import { HistoryLineChart } from "./components";
-
 import CS from "./index.module.scss";
-import { Price } from "../../../../../utils";
-import { HomeContext } from "../../../../../context";
 
 export default function HomeTable({ data = [], meta }: any) {
   const datas = useContext(HomeContext);

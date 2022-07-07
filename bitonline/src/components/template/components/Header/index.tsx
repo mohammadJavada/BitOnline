@@ -1,9 +1,9 @@
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import React, { FC } from "react";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import CS from "./index.module.scss";
-import logo from "../../../../../public/assets/header-logo.svg";
 import Image from "next/image";
 import { Box } from "@mui/system";
+import { logoImg, menuImg } from "@data";
 
 const Header: FC = () => {
   return (
@@ -11,7 +11,10 @@ const Header: FC = () => {
       <AppBar position="static" className={CS.header}>
         <Box className={CS.container}>
           <Toolbar className={CS.toolbar}>
-            <Button color="inherit">منو</Button>
+            <Button color="inherit">
+              <Image src={menuImg} alt="*" width={20} height={20} />
+              <span>منو</span>
+            </Button>
             <Button color="inherit">خانه</Button>
             <Button color="inherit">قیمت لحظه ای</Button>
             <Button color="inherit">کارمزدها</Button>
@@ -24,7 +27,7 @@ const Header: FC = () => {
             </Button>
             <span className={CS.spaceContent}>|</span>
             <Image
-              src={logo}
+              src={logoImg}
               alt="Picture of the author"
               width="119px"
               height="48px"
