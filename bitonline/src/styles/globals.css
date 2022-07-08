@@ -15,6 +15,11 @@
   font-weight: 700;
   src: url("../../public/font/iranSans/IranSans-700.woff2");
 }
+@font-face {
+	font-family: 'lora';
+	font-weight: 500;
+	src: url('../../public/font/lora/lora-500.ttf');
+}
 *{
   font-family:"iransans" ;
 }
@@ -43,6 +48,10 @@ a {
 .dir {
   direction: rtl;
 }
+.dir-l{
+  direction: ltr;
+}
+
 .MuiButton-text,
 .MuiButton-root {
   font-family: "iransans";
