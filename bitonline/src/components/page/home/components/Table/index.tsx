@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import Image from "next/image";
 
-import { starImg, tetherImg } from "@data";
+import { emptyImg, starImg, tetherImg } from "@data";
 import { Price } from "@utils";
 import { HomeContext } from "@context/index";
 import { HistoryLineChart } from "./components";
@@ -60,95 +60,107 @@ export default function HomeTable({ data = [], meta }: any) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row: any, i: any) => (
-            <TableRow
-              key={i}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell align="right">
-                {
-                  <Button variant="text">
-                    <Image src={starImg} alt="*" width={20} height={20} />
-                  </Button>
-                }
-              </TableCell>
-              <TableCell
-                align="right"
-                width="15%"
-                className={
-                  row.percent === 0
-                    ? CS.percent
-                    : row.percent > 0
-                    ? CS.positive
-                    : CS.negative
-                }
-              >
-                <div className={CS.percentdir}>{row.percent}%</div>
-              </TableCell>
-              <TableCell align="right" width="15%">
-                {row?.chart?.length ? (
-                  <HistoryLineChart
-                    history={row.chart}
-                    status={row.percent > 0 ? "Y" : "N"}
-                    width={"145px"}
-                    height={"40px"}
-                  />
-                ) : (
-                  ""
-                )}
-              </TableCell>
-              <TableCell align="left" width="15%">
-                <div className={CS.price}>
-                  <span className={CS.tableHeader}>
-                    {Price.seperate(checkPrice(row?.price, "sell"))}
-                  </span>
-                  <span>
-                    {type === "تومان" ? (
-                      " تومان"
+          {data.length
+            ? data.map((row: any, i: any) => (
+                <TableRow
+                  key={i}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="right">
+                    {
+                      <Button variant="text">
+                        <Image src={starImg} alt="*" width={20} height={20} />
+                      </Button>
+                    }
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    width="15%"
+                    className={
+                      row.percent === 0
+                        ? CS.percent
+                        : row.percent > 0
+                        ? CS.positive
+                        : CS.negative
+                    }
+                  >
+                    <div className={CS.percentdir}>{row.percent}%</div>
+                  </TableCell>
+                  <TableCell align="right" width="15%">
+                    {row?.chart?.length ? (
+                      <HistoryLineChart
+                        history={row.chart}
+                        status={row.percent > 0 ? "Y" : "N"}
+                        width={"145px"}
+                        height={"40px"}
+                      />
                     ) : (
-                      <Image src={tetherImg} alt="*" width={20} height={20} />
+                      ""
                     )}
-                  </span>
-                </div>
-              </TableCell>
-              <TableCell align="left" width="15%">
-                <div className={CS.price}>
-                  <span className={CS.tableHeader}>
-                    {Price.seperate(checkPrice(row?.price, "buy"))}
-                  </span>
-                  <span>
-                    {type === "تومان" ? (
-                      " تومان"
-                    ) : (
-                      <Image src={tetherImg} alt="*" width={20} height={20} />
-                    )}
-                  </span>
-                </div>
-              </TableCell>
-              <TableCell align="left" width="15%">
-                <div className={CS.imageField}>
-                  <div className={CS.currencyName}>
-                    <div className={CS.currencyEnName}>{row?.enName}</div>
-                    <div className={CS.currencySymbol}>
-                      <div className={CS.numberPrefix}>{i + 1}</div>
-                      <div>{row?.coin}</div>
+                  </TableCell>
+                  <TableCell align="left" width="15%">
+                    <div className={CS.price}>
+                      <span className={CS.tableHeader}>
+                        {Price.seperate(checkPrice(row?.price, "sell"))}
+                      </span>
+                      <span>
+                        {type === "تومان" ? (
+                          " تومان"
+                        ) : (
+                          <Image
+                            src={tetherImg}
+                            alt="*"
+                            width={20}
+                            height={20}
+                          />
+                        )}
+                      </span>
                     </div>
-                  </div>
-                  <div>
-                    <Image
-                      priority
-                      src={row.icon}
-                      loader={() => row.icon}
-                      unoptimized={true}
-                      width={36}
-                      height={36}
-                      alt={"*"}
-                    />
-                  </div>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
+                  </TableCell>
+                  <TableCell align="left" width="15%">
+                    <div className={CS.price}>
+                      <span className={CS.tableHeader}>
+                        {Price.seperate(checkPrice(row?.price, "buy"))}
+                      </span>
+                      <span>
+                        {type === "تومان" ? (
+                          " تومان"
+                        ) : (
+                          <Image
+                            src={tetherImg}
+                            alt="*"
+                            width={20}
+                            height={20}
+                          />
+                        )}
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell align="left" width="15%">
+                    <div className={CS.imageField}>
+                      <div className={CS.currencyName}>
+                        <div className={CS.currencyEnName}>{row?.enName}</div>
+                        <div className={CS.currencySymbol}>
+                          <div className={CS.numberPrefix}>{i + 1}</div>
+                          <div>{row?.coin}</div>
+                        </div>
+                      </div>
+                      <div>
+                        <Image
+                          priority
+                          src={row.icon}
+                          loader={() => row.icon}
+                          unoptimized={true}
+                          width={36}
+                          height={36}
+                          alt={"*"}
+                        />
+                      </div>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            : ""}
         </TableBody>
       </Table>
     </TableContainer>
