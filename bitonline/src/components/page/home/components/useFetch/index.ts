@@ -47,8 +47,11 @@ export default function useFetch(
           const response = await axios.get(handleUrl());
           const { data }: any = response;
           const list = data?.result?.items;
+
           if (search) {
-            setSearchList((post: any) => [...post, ...list]);
+            setSearchList((post: any) =>
+              page > 1 ? [...searchList, ...list] : [...list]
+            );
             search.length >= 1 ? setData([]) : "";
           } else if (sort) {
             setSearchList([]);

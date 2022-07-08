@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { HomeContext } from "@context/index";
 import useFetch from "./components/useFetch/index";

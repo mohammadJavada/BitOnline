@@ -1,6 +1,3 @@
-import React, { FC, useContext, useEffect, useState } from "react";
-import Image from "next/image";
-
 import {
   Button,
   FormControl,
@@ -14,13 +11,15 @@ import {
   ToggleButtonGroup,
 } from "@mui/material";
 
-import { Box } from "@mui/system";
+import React, { FC, useContext, useEffect, useState } from "react";
 
+import { Box } from "@mui/system";
+import Image from "next/image";
 import { starImg, searchIcon } from "@data";
 import { HomeContext } from "@context/index";
-import { useDebounce } from "@hooks";
 
 import CS from "./index.module.scss";
+import { useDebounce } from "@hooks";
 
 const SortData: FC = ({ total }: any) => {
   const data = useContext(HomeContext);
@@ -45,22 +44,28 @@ const SortData: FC = ({ total }: any) => {
     setCurrentPage(1);
     setIsFetch(true);
   };
-  const searchData = useDebounce(search, 3000);
-
-  console.log(searchData);
 
   const handleSearch = (e: any) => {
     setSearch(e.target.value);
-    setCurrentPage(1);
+
+    // const delayDebounceFn = setTimeout(async () => {
+    //   setCurrentPage(1);
+    // }, 1000);
+
+    // return () => clearTimeout(delayDebounceFn);
   };
 
+  const debounce = useDebounce(search, 2000);
+
   useEffect(() => {
-    if (searchData) {
+    if (search.length >= 1 && debounce === search) {
+      setCurrentPage(1);
       setIsFetch(true);
     } else {
-      setIsFetch(false);
+      setSearchList([]);
+      setCurrentPage(1);
     }
-  }, [searchData, setIsFetch]);
+  }, [debounce, search, setCurrentPage, setIsFetch, setSearchList]);
 
   return (
     <div>

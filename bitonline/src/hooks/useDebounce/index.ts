@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-type Value = string | number;
-
-export const useDebounce = (value: Value, delay: number) => {
+export const useDebounce = (value: string, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
