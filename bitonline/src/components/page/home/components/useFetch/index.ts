@@ -75,7 +75,6 @@ export default function useFetch(
     }
     return data;
   };
-  console.log(data);
 
   return { data: handleSearch(), error, loading };
 }
