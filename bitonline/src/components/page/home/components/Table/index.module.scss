@@ -1,7 +1,9 @@
 .tableContainer {
   box-shadow: none;
   margin-top: 5px;
-  
+  .tetPrice{
+   font-family: 'arial'
+  };
   .tableRow {
     background-color: #fafafa;
     border-radius: 8px;
@@ -9,17 +11,14 @@
   .select {
     color: black;
   }
-  .tableHeader {
-    font-weight: 700;
-  }
-  .percentdir {
+   .percentdir {
     direction: ltr;
   }
   .price {
-    direction: ltr;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 3px;
+    justify-content: center;
   }
   .percent {
     font-weight: 700;

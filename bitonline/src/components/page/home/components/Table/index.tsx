@@ -35,27 +35,23 @@ export default function HomeTable({ data = [], meta, isLoading }: any) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow className={CS.tableRow}>
-            <TableCell
-              align="right"
-              width="15%"
-              className={`${CS.tableHeader}`}
-            >
-              <div className={CS.select}>نشان کردن</div>
+            <TableCell align="right" width="15%">
+              <strong className={CS.select}>نشان کردن</strong>
             </TableCell>
-            <TableCell align="right" width="15%" className={CS.tableHeader}>
-              <div>تغییرات</div>
+            <TableCell align="right" width="15%">
+              <strong>تغییرات</strong>
             </TableCell>
-            <TableCell align="center" width="15%" className={CS.tableHeader}>
-              <div>نمودار</div>
+            <TableCell align="center" width="15%">
+              <strong>نمودار</strong>
             </TableCell>
-            <TableCell align="left" width="15%" className={CS.tableHeader}>
-              <div>{type === "تومان" ? " قیمت فروش" : "ارزش بازار"}</div>
+            <TableCell align="center" width="15%">
+              <strong>{type === "تومان" ? " قیمت فروش" : "ارزش بازار"}</strong>
             </TableCell>
-            <TableCell align="left" width="15%" className={CS.tableHeader}>
-              <div>{type === "تومان" ? " قیمت خرید" : "قیمت جهانی"}</div>
+            <TableCell align="center" width="15%">
+              <strong>{type === "تومان" ? " قیمت خرید" : "قیمت جهانی"}</strong>
             </TableCell>
-            <TableCell align="left" width="15%" className={CS.tableHeader}>
-              <div>ارز دیجیتال</div>
+            <TableCell align="left" width="15%">
+              <strong>ارز دیجیتال</strong>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -99,25 +95,29 @@ export default function HomeTable({ data = [], meta, isLoading }: any) {
                     ""
                   )}
                 </TableCell>
-                <TableCell align="left" width="15%">
-                  <div className={CS.price}>
-                    <span className={CS.tableHeader}>
-                      {Price.seperate(checkPrice(row?.price, "sell"))}
-                    </span>
-                    <span>
-                      {type === "تومان" ? (
-                        " تومان"
-                      ) : (
-                        <Image src={tetherImg} alt="*" width={20} height={20} />
-                      )}
-                    </span>
+                <TableCell align="center" width="15%">
+                  <div className={`${CS.price} dir-l`}>
+                    {type === "تومان" ? (
+                      <strong>
+                        {Price.seperate(checkPrice(row?.price, "sell"))}
+                      </strong>
+                    ) : (
+                      <span className={CS.tetPrice}>
+                        {Price.seperate(row.quote)}
+                      </span>
+                    )}
+                    <span>{type === "تومان" ? " تومان" : "USDT"}</span>
                   </div>
                 </TableCell>
-                <TableCell align="left" width="15%">
-                  <div className={CS.price}>
-                    <span className={CS.tableHeader}>
+                <TableCell align="center" width="15%">
+                  <div
+                    className={`${CS.price} ${
+                      type === "تومان" ? "dir-l" : "dir"
+                    }`}
+                  >
+                    <strong className={type === "تومان" ? "" : CS.tetPrice}>
                       {Price.seperate(checkPrice(row?.price, "buy"))}
-                    </span>
+                    </strong>
                     <span>
                       {type === "تومان" ? (
                         " تومان"
@@ -152,7 +152,7 @@ export default function HomeTable({ data = [], meta, isLoading }: any) {
               </TableRow>
             ))
           ) : (
-            <TableRow>
+            <TableRow style={{ display: "none" }}>
               <TableCell component="th" scope="row"></TableCell>
             </TableRow>
           )}
