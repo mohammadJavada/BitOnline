@@ -47,12 +47,6 @@ const SortData: FC = ({ total }: any) => {
 
   const handleSearch = (e: any) => {
     setSearch(e.target.value);
-
-    // const delayDebounceFn = setTimeout(async () => {
-    //   setCurrentPage(1);
-    // }, 1000);
-
-    // return () => clearTimeout(delayDebounceFn);
   };
 
   const debounce = useDebounce(search, 2000);
