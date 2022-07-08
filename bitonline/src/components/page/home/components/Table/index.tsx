@@ -59,6 +59,7 @@ export default function HomeTable({ data = [], meta }: any) {
             </TableCell>
           </TableRow>
         </TableHead>
+
         <TableBody>
           {data.length
             ? data.map((row: any, i: any) => (
@@ -163,6 +164,13 @@ export default function HomeTable({ data = [], meta }: any) {
             : ""}
         </TableBody>
       </Table>
+      {!data?.lenght ? (
+        <div className={CS.emptyImage}>
+          <Image src={emptyImg} alt="*" width="100" />
+        </div>
+      ) : (
+        ""
+      )}
     </TableContainer>
   );
 }
