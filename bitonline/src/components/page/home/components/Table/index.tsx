@@ -15,7 +15,7 @@ import { HomeContext } from "@context/index";
 import { HistoryLineChart } from "./components";
 import CS from "./index.module.scss";
 
-export default function HomeTable({ data = [], meta }: any) {
+export default function HomeTable({ data = [], meta, isLoading }: any) {
   const datas = useContext(HomeContext);
   const { type } = datas;
   const { buy, sell } = meta;
@@ -164,7 +164,7 @@ export default function HomeTable({ data = [], meta }: any) {
             : ""}
         </TableBody>
       </Table>
-      {!data?.lenght ? (
+      {!data?.lenght && isLoading !== true ? (
         <div className={CS.emptyImage}>
           <Image src={emptyImg} alt="*" width="100" />
         </div>

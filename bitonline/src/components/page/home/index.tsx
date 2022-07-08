@@ -22,7 +22,7 @@ const HomePage: NextPage = (currency) => {
     setIsFetch(true);
   };
 
-  const { data: dataList } = useFetch(
+  const { data: dataList, loading } = useFetch(
     `https://api.bitbarg.me/api/v1/currencies`,
     isFetch ? [] : items,
     currentPage,
@@ -45,7 +45,7 @@ const HomePage: NextPage = (currency) => {
           hasMore={currentPage <= lastPage}
           loader={<h4></h4>}
         >
-          <HomeTable data={dataList} meta={prices} />
+          <HomeTable data={dataList} meta={prices} isloading={loading} />
         </InfiniteScroll>
       </div>
     </div>
