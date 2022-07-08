@@ -1,8 +1,17 @@
-
 .sortContainer {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 2fr;
   gap: 20px;
+  .searchInput{
+    width: 100%;
+  }
+  .hightlightedBtn{
+    border: 1px solid #e0e0e0;
+    .hightlightedBtnTitle{
+      padding: 0 10px;
+      color: rgba(0, 0, 0, 0.87)
+    }
+  }
 }
 .title {
   font-weight: 700;
@@ -25,13 +34,26 @@
     }
   }
 }
-.toggleButton{
-  padding: 0 20px;
-  margin: 0 5px;
-  border-radius: 5px !important
-}
-.toggleButtonSeleced{
-  background-color:#4285F21A !important;
-  border-color:#4285F21A !important;
-  color:#4285F2 !important;
+
+.box{
+  border: 1px solid #e0e0e0;
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  width: 100%;
+  .toggleButtonGroup{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    .toggleButton{
+      padding: 0 20px;
+      margin: 0 5px;
+      border-radius: 5px !important
+    }
+    .toggleButtonSeleced{
+      background-color:#4285F21A !important;
+      border-color:#4285F21A !important;
+      color:#4285F2 !important;
+    }
+  }
 }

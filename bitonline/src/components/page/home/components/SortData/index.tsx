@@ -66,7 +66,7 @@ const SortData: FC = ({ total }: any) => {
       <div className={CS.sortContainer}>
         <div>
           <OutlinedInput
-            style={{ width: "100%" }}
+            className={CS.searchInput}
             placeholder="جستجو"
             value={search}
             onChange={handleSearch}
@@ -78,13 +78,11 @@ const SortData: FC = ({ total }: any) => {
           />
         </div>
         <Button
-          style={{ border: "1px solid #e0e0e0" }}
+          className={CS.hightlightedBtn}
           variant="outlined"
           startIcon={<Image src={starImg} alt="*" width={20} height={20} />}
         >
-          <span style={{ padding: "0 10px", color: "rgba(0, 0, 0, 0.87)" }}>
-            نشان شده ها
-          </span>
+          <span className={CS.hightlightedBtnTitle}>نشان شده ها</span>
         </Button>
         <FormControl size="medium" sx={{ width: 200 }}>
           <InputLabel id="demo-multiple-checkbox-label">
@@ -104,23 +102,11 @@ const SortData: FC = ({ total }: any) => {
             ))}
           </Select>
         </FormControl>
-        <Box
-          style={{
-            border: "1px solid #e0e0e0",
-            padding: "4px",
-            borderRadius: "5px",
-            display: "flex",
-            width: "100%",
-          }}
-        >
+        <Box className={CS.box}>
           <ToggleButtonGroup
             exclusive
             aria-label="text alignment"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "100%",
-            }}
+            className={CS.toggleButtonGroup}
           >
             <ToggleButton
               onClick={() => setType("تومان")}
