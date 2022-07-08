@@ -11,6 +11,7 @@ export const HomeProvider = (props: any) => {
   const [isFetch, setIsFetch] = useState(false);
 
   const [sortLists, setSortLists] = useState<any[]>([]);
+  const [searchList, setSearchList] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortList = ["حالت پیش فرض", "کمترین قیمت", "بیشترین قیمت"];
@@ -33,6 +34,8 @@ export const HomeProvider = (props: any) => {
         setSortLists,
         currentPage,
         setCurrentPage,
+        searchList,
+        setSearchList,
       }}
     >
       {props.children}

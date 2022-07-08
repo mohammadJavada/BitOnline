@@ -33,20 +33,13 @@ const SortData: FC = ({ total }: any) => {
     setIsFetch,
     setSortLists,
     setCurrentPage,
+    setSearchList,
   } = data;
-
-  const [delay, setDelay] = useState(0);
-
-  const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
-    type: string | null
-  ) => {
-    setType(type);
-  };
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
     setSortLists([]);
+    setSearchList([]);
     setCurrentPage(1);
     setIsFetch(true);
   };
@@ -56,8 +49,7 @@ const SortData: FC = ({ total }: any) => {
     const delayDebounceFn = setTimeout(async () => {
       setCurrentPage(1);
       setIsFetch(true);
-      setDelay(delay + 1);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(delayDebounceFn);
   };
@@ -122,9 +114,7 @@ const SortData: FC = ({ total }: any) => {
           }}
         >
           <ToggleButtonGroup
-            value={type}
             exclusive
-            onChange={handleAlignment}
             aria-label="text alignment"
             style={{
               display: "grid",
@@ -133,25 +123,19 @@ const SortData: FC = ({ total }: any) => {
             }}
           >
             <ToggleButton
-              style={{
-                padding: "0 20px",
-                margin: "0 5px",
-                borderRadius: "5px",
-                backgroundColor: type === "تومان" ? "#4285F21A" : "#fff",
-                borderColor: type === "تومان" ? "#4285F21A" : "#fff",
-              }}
+              onClick={() => setType("تومان")}
+              className={`${CS.toggleButton} ${
+                type === "تومان" && CS.toggleButtonSeleced
+              }`}
               value="تومان"
             >
               <div>تومان</div>
             </ToggleButton>
             <ToggleButton
-              style={{
-                padding: "0 20px",
-                margin: "0 5px",
-                borderRadius: "5px",
-                backgroundColor: type === "تتر" ? "#4285F21A" : "#fff",
-                borderColor: type === "تتر" ? "#4285F21A" : "#fff",
-              }}
+              onClick={() => setType("تتر")}
+              className={`${CS.toggleButton} ${
+                type === "تتر" && CS.toggleButtonSeleced
+              }`}
               value="تتر"
             >
               <div>تتر</div>

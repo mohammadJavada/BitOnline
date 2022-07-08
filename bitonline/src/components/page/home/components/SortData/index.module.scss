@@ -1,3 +1,4 @@
+
 .sortContainer {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 2fr;
@@ -23,4 +24,14 @@
       background-color: #fbbd06;
     }
   }
+}
+.toggleButton{
+  padding: 0 20px;
+  margin: 0 5px;
+  border-radius: 5px !important
+}
+.toggleButtonSeleced{
+  background-color:#4285F21A !important;
+  border-color:#4285F21A !important;
+  color:#4285F2 !important;
 }

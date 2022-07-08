@@ -140,8 +140,8 @@ export default function HomeTable({ data = [], meta }: any) {
                       src={row.icon}
                       loader={() => row.icon}
                       unoptimized={true}
-                      width={50}
-                      height={50}
+                      width={36}
+                      height={36}
                       alt={"*"}
                     />
                   </div>
