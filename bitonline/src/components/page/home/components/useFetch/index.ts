@@ -10,7 +10,8 @@ export default function useFetch(
   sort: number = 2,
   isFetch: boolean = false
 ) {
-  const { sortLists, setSortLists } = useContext(HomeContext);
+  const { sortLists, setSortLists, searchList, setSearchList } =
+    useContext(HomeContext);
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -40,11 +41,12 @@ export default function useFetch(
           const { data }: any = response;
           const list = data?.result?.items;
           if (search) {
-            setSearchData((post: any) => [...post, ...list]);
+            setSearchList((post: any) => [...post, ...list]);
           } else if (sort) {
+            setSearchList([]);
             setSortLists((post: any) => [...post, ...list]);
           } else {
-            setSearchData([]);
+            setSearchList([]);
             setData((post: any) => [...post, ...list]);
           }
         } catch (err: any) {
@@ -59,7 +61,7 @@ export default function useFetch(
 
   const handleSearch = () => {
     if (search && isFetch) {
-      return searchData;
+      return searchList;
     } else if (sort && isFetch) {
       return sortLists;
     }
