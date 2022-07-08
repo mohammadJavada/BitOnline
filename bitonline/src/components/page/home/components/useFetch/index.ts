@@ -17,8 +17,6 @@ export default function useFetch(
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(sort ? [] : dataList);
 
-  const [searchData, setSearchData] = useState<any>([]);
-
   const trueSort = (sort: number) => {
     switch (sort) {
       case 0:
@@ -30,18 +28,28 @@ export default function useFetch(
     }
   };
 
+  const handleUrl = () => {
+    if (sort && !search) {
+      return `${url}?page=${page}&sort=${trueSort(sort)}`;
+    } else if (search && !sort) {
+      return `${url}?page=${page}&q=${search}`;
+    } else if (!sort && !search) {
+      return `${url}?page=${page}`;
+    }
+    return `${url}?page=${page}&sort=${trueSort(sort)}&q=${search}`;
+  };
+
   useEffect(() => {
     (async function () {
       if (isFetch) {
         try {
           setLoading(true);
-          const response = await axios.get(
-            `${url}?page=${page}&sort=${trueSort(sort)}&q=${search}`
-          );
+          const response = await axios.get(handleUrl());
           const { data }: any = response;
           const list = data?.result?.items;
           if (search) {
             setSearchList((post: any) => [...post, ...list]);
+            search.length >= 1 ? setData([]) : "";
           } else if (sort) {
             setSearchList([]);
             setSortLists((post: any) => [...post, ...list]);
@@ -67,6 +75,7 @@ export default function useFetch(
     }
     return data;
   };
+  console.log(data);
 
   return { data: handleSearch(), error, loading };
 }
