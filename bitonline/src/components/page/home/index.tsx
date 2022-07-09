@@ -18,7 +18,7 @@ const HomePage: NextPage = (currency) => {
   const { lastPage, total } = paginateHelper;
 
   const fetchMore = () => {
-    setCurrentPage((page: any) => page + 1);
+    setCurrentPage((page: number) => page + 1);
     setIsFetch(true);
   };
 

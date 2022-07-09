@@ -3,16 +3,14 @@ import React, { createContext, useState } from "react";
 export const HomeContext = createContext<any>({});
 
 export const HomeProvider = (props: any) => {
-  const [currencyList, setCurrencyList] = useState([]);
-
   const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState(0);
-  const [type, setType] = useState("تومان");
-  const [isFetch, setIsFetch] = useState(false);
+  const [sort, setSort] = useState<number>(0);
+  const [type, setType] = useState<string>("تومان");
+  const [isFetch, setIsFetch] = useState<boolean>(false);
 
   const [sortLists, setSortLists] = useState<any[]>([]);
   const [searchList, setSearchList] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const sortList = ["حالت پیش فرض", "کمترین قیمت", "بیشترین قیمت"];
 
@@ -21,8 +19,6 @@ export const HomeProvider = (props: any) => {
       value={{
         isFetch,
         setIsFetch,
-        setCurrencyList,
-        currencyList,
         search,
         setSearch,
         sort,
