@@ -15,7 +15,7 @@ import { HomeContext } from "@context/index";
 import { HistoryLineChart } from "./components";
 import CS from "./index.module.scss";
 
-export default function HomeTable({ data = [], meta, isLoading }: any) {
+const HomeTable = ({ data = [], meta, isLoading }: any) => {
   const datas = useContext(HomeContext);
   const { type } = datas;
   const { buy, sell } = meta;
@@ -167,4 +167,6 @@ export default function HomeTable({ data = [], meta, isLoading }: any) {
       )}
     </TableContainer>
   );
-}
+};
+
+export default HomeTable;

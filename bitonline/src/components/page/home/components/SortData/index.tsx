@@ -11,7 +11,7 @@ import {
   ToggleButtonGroup,
 } from "@mui/material";
 
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { ChangeEvent, FC, useContext, useEffect, useState } from "react";
 
 import { Box } from "@mui/system";
 import Image from "next/image";
@@ -21,7 +21,11 @@ import { HomeContext } from "@context/index";
 import CS from "./index.module.scss";
 import { useDebounce } from "@hooks";
 
-const SortData: FC = ({ total }: any) => {
+interface PostProps {
+  total: number;
+}
+
+const SortData: FC<PostProps> = ({ total }) => {
   const data = useContext(HomeContext);
   const {
     search,
@@ -36,7 +40,6 @@ const SortData: FC = ({ total }: any) => {
     setCurrentPage,
     setSearchList,
   } = data;
-
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value);
     setSortLists([]);
@@ -45,7 +48,7 @@ const SortData: FC = ({ total }: any) => {
     setIsFetch(true);
   };
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 

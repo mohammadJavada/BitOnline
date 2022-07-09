@@ -13,7 +13,7 @@ const Header: FC = () => {
           <Toolbar className={CS.toolbar}>
             <Button color="inherit">
               <Image src={menuImg} alt="*" width={20} height={20} />
-              <span>منو</span>
+              <span className={CS.menuTitle}>منو</span>
             </Button>
             <Button color="inherit">خانه</Button>
             <Button color="inherit">قیمت لحظه ای</Button>

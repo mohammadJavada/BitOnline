@@ -22,6 +22,9 @@
       display: flex;
       color: rgba(0, 0, 0, 0.6);
       padding: 0px;
+      .menuTitle{
+        padding-right: 5px;
+      }
       .loginBtn {
         background-color: rgb(66, 133, 242);
         font-weight: 500;
