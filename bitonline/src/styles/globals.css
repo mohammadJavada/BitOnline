@@ -16,19 +16,14 @@
   src: url("../../public/font/iranSans/IranSans-700.woff2");
 }
 @font-face {
-	font-family: 'lora';
-	font-weight: 500;
-	src: url('../../public/font/lora/lora-500.ttf');
-}
-*{
-  font-family:"iransans" ;
-}
-
-/* @font-face {
   font-family: "lora";
   font-weight: 500;
-  src: url("../../font/lora/lora-500.ttf");
-} */
+  src: url("../../public/font/lora/lora-500.ttf");
+}
+* {
+  font-family: "iransans";
+}
+
 html,
 body {
   padding: 0;
@@ -48,11 +43,33 @@ a {
 .dir {
   direction: rtl;
 }
-.dir-l{
+.dir-l {
   direction: ltr;
 }
 
 .MuiButton-text,
 .MuiButton-root {
   font-family: "iransans";
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9e9e9e;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #616161;
 }
